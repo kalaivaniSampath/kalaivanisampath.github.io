@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded Salesforce Flow</title>
+    <script src="https://tti-dev-ed.develop.lightning.force.com/lightning/lightning.out.js"></script>
+</head>
+<body>
+    <h1>Ryobi Form Submission</h1>
+    <div id="flowContainer"></div>
+
+    <script>
+        $Lightning.use(
+            "c:flowlightningOutApp", // your Aura app
+            function() {
+                $Lightning.createComponent(
+                    "c:RyobiLightningOutFlow",
+                    {},
+                    "RyobiLightningOutFlow",
+                    function(cmp) {
+                        console.log("Flow loaded!");
+                    }
+                );
+            },
+            "https://tti-dev-ed.develop.lightning.force.com"
+        );
+    </script>
+</body>
+</html>
