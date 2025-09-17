@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +6,16 @@
 </head>
 <body>
     <h1>Ryobi Form Submission</h1>
-    <div id="flowContainer"></div>
+    <div id="flowContainer"></div> <!-- must match below -->
 
     <script>
         $Lightning.use(
-            "c:flowlightningOutApp", // your Aura app
+            "c:flowlightningOutApp", // Aura app
             function() {
                 $Lightning.createComponent(
                     "c:RyobiLightningOutFlow",
                     {},
-                    "RyobiLightningOutFlow",
+                    "flowContainer",  // match div id here
                     function(cmp) {
                         console.log("Flow loaded!");
                     }
