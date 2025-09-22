@@ -14,6 +14,19 @@
   >
   </lightning-out-application>
 
-  <!-- Lightning Out 2.0 web component (rendered by app) -->
-  <c-lightning-outtwolwc style="--custom-color: brown;"></c-lightning-outtwolwc>
+ <!-- Lightning Out 2.0 web component -->
+  <c-lightning-outtwolwc style="--custom-color: brown;">
+    <!-- shadow DOM open -->
+    <iframe>
+      <html>
+        <!-- Salesforce context -->
+        <body>
+          <!-- Lightning web component -->
+          <c-lightning-outtwolwc style="--custom-color: brown;"></c-lightning-outtwolwc>
+        </body>
+      </html>
+    </iframe>
+    <!-- shadow DOM close -->
+  </c-lightning-outtwolwc>
+  
 </body>
