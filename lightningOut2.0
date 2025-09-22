@@ -9,7 +9,7 @@
   <!-- Lightning Out 2.0 web component: base configuration -->
   <lightning-out-application
     frontdoor-url="https://tti-dev-ed.develop.lightning.force.com/secur/frontdoor.jsp?..."
-    components="c-my-lwc"
+    components="LightningOuttwolwc" 
   >
   </lightning-out-application>
   <!-- Lightning Out 2.0 web component -->
