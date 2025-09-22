@@ -1,29 +1,19 @@
-<!-- Host page context-->
+<!-- Host page context -->
 <body>
-  <!--Lightning Out 2.0 JS library -->
+  <!-- Lightning Out 2.0 JS library -->
   <script
     type="text/javascript"
-    async=""
+    async
     src="https://tti-dev-ed.develop.lightning.force.com/lightning/lightning.out.latest/index.iife.prod.js"
   ></script>
+
   <!-- Lightning Out 2.0 web component: base configuration -->
   <lightning-out-application
-    frontdoor-url="https://tti-dev-ed.develop.lightning.force.com/secur/frontdoor.jsp?..."
-    components="LightningOuttwolwc" 
+    frontdoor-url="https://tti-dev-ed.develop.lightning.force.com/secur/frontdoor.jsp?sid=YOUR_SESSION_ID"
+    components="c:lightning-outtwolwc"
   >
   </lightning-out-application>
-  <!-- Lightning Out 2.0 web component -->
-  <c-my-lwc style="--custom-color: brown;">
-    <!-- shadow DOM open -->
-    <iframe>
-      <html>
-        <!-- Salesforce context -->
-        <body>
-          <!-- Lightning web component -->
-          <c-my-lwc style="--custom-color: brown;"></c-my-lwc>
-        </body>
-      </html>
-    </iframe>
-    <!-- shadow DOM close -->
-  </c-my-lwc>
+
+  <!-- Lightning Out 2.0 web component (rendered by app) -->
+  <c-lightning-outtwolwc style="--custom-color: brown;"></c-lightning-outtwolwc>
 </body>
