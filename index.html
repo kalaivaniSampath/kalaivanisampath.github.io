@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Lightning Out 2.0 Example</title>
@@ -9,13 +10,17 @@
       src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
   </script>
 
-  <!-- Self-closing Lightning Out 2.0 app container -->
+  <!-- Where the component will render -->
+  <div id="myContainer"></div>
+
+  <!-- Lightning Out 2.0 application -->
   <lightning-out-application
-      frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?sid=YOUR_SESSION_ID&retURL=/"
-      components="c-lightningouttwoexample">
+      frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?sid=YOUR_SID&retURL=/"
+      components="c-lightningouttwoexample"
+      target="myContainer">
   </lightning-out-application>
 
-  <!-- You can add *normal HTML content* outside -->
-  <h1>Welcome to Lightning Out 2.0 via GitHub Pages</h1>
+  <h2>Static HTML below</h2>
+  <p>This is just plain HTML under the Lightning component.</p>
 </body>
 </html>
