@@ -11,14 +11,8 @@
           src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
      </script>
 
-    <lightning-out-application 
-       frontdoor-url="https://https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?..."
-       components="c-ligtningouttwoexample">
-    </lightning-out-application>
-    <c-ligtningouttwoexample></c-ligtningouttwoexample>
+   
 
-
-  
 
  <!-- Lightning Out 2.0 web component -->
   <c-lightning-outtwolwc style="--custom-color: brown;">
@@ -29,6 +23,12 @@
         <body>
           <!-- Lightning web component -->
           <c-ligtningouttwoexample style="--custom-color: brown;"></c-ligtningouttwoexample>
+           <lightning-out-application 
+           frontdoor-url="https://https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?..."
+           components="c-ligtningouttwoexample">
+          </lightning-out-application>
+        <c-ligtningouttwoexample></c-ligtningouttwoexample>
+
         </body>
       </html>
     </iframe>
