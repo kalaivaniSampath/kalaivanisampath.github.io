@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Lightning Out 2.0 Example</title>
-</head>
-<body>
-  <!-- Load Lightning Out 2.0 runtime -->
-  <script 
+  <head>
+    <title>Lightning Out 2.0 Host</title>
+  </head>
+  <body>
+    <external-page-element-1></external-page-element-1>
+
+    <!-- Load Lightning Out 2.0 runtime -->
+    <script
       type="text/javascript"
       src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
-  </script>
+    </script>
 
-  <!-- Where the component will render -->
-  <div id="myContainer"></div>
+    <!-- Placeholder container where Salesforce will inject your LWC -->
+    <div id="myContainer"></div>
 
-  <!-- Lightning Out 2.0 application -->
-  <lightning-out-application
-      frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?sid=YOUR_SID&retURL=/"
+    <!-- Lightning Out 2.0 Application -->
+    <lightning-out-application
+      frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?sid=YOUR_SESSION_ID&retURL=/"
       components="c-lightningouttwoexample"
       target="myContainer">
-  </lightning-out-application>
+    </lightning-out-application>
 
-  <h2>Static HTML below</h2>
-  <p>This is just plain HTML under the Lightning component.</p>
-</body>
+    <external-page-element-2></external-page-element-2>
+    <external-page-element-3></external-page-element-3>
+  </body>
 </html>
