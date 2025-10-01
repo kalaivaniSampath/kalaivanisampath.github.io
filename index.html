@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lightning Out 2.0 Host</title>
+    <title>Lightning Out 2.0 on GitHub Pages</title>
   </head>
   <body>
-    <external-page-element-1></external-page-element-1>
+    <h2>External GitHub Page + Salesforce Lightning Out 2.0</h2>
 
-    <!-- Load Lightning Out 2.0 runtime -->
-    <script
+    <!-- Placeholder for Salesforce LWC -->
+    <div id="myContainer"></div>
+
+    <!-- Load Salesforce Lightning Out 2.0 Runtime -->
+    <script 
       type="text/javascript"
       src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
     </script>
-
-    <!-- Placeholder container where Salesforce will inject your LWC -->
-    <div id="myContainer"></div>
 
     <!-- Lightning Out 2.0 Application -->
     <lightning-out-application
@@ -21,8 +21,5 @@
       components="c-lightningouttwoexample"
       target="myContainer">
     </lightning-out-application>
-
-    <external-page-element-2></external-page-element-2>
-    <external-page-element-3></external-page-element-3>
   </body>
 </html>
