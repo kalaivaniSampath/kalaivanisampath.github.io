@@ -1,32 +1,12 @@
-<!-- Host page context -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
 <body>
-  <!-- Lightning Out 2.0 JS library -->
-  <script
-    type="text/javascript"
-    async
-    src="https://tti-dev-ed.develop.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js"
-  ></script>
 
-  <!-- Lightning Out 2.0 web component: base configuration -->
-  <lightning-out-application
-    frontdoor-url="https://tti-dev-ed.develop.my.salesforce.com/secur/frontdoor.jsp?..."
-    components="c:LightningOuttwolwc"
-  >
-  </lightning-out-application>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
 
- <!-- Lightning Out 2.0 web component -->
-  <c-lightning-outtwolwc style="--custom-color: brown;">
-    <!-- shadow DOM open -->
-    <iframe>
-      <html>
-        <!-- Salesforce context -->
-        <body>
-          <!-- Lightning web component -->
-          <c-lightning-outtwolwc style="--custom-color: brown;"></c-lightning-outtwolwc>
-        </body>
-      </html>
-    </iframe>
-    <!-- shadow DOM close -->
-  </c-lightning-outtwolwc>
-  
 </body>
+</html>
