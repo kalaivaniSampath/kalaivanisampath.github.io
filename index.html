@@ -1,26 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page Title</title>
-    <script type='text/javascript' src='https://tti-dev-ed.develop.my.site.com/ContactUs/lightning/lightning.out.js'></script>
-</head>
+<!-- Host page context -->
 <body>
-    <div id="container"></div>
+  <!-- Lightning Out 2.0 JS library -->
+  <script
+    type="text/javascript"
+    async
+    src="https://tti-dev-ed.develop.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js"
+  ></script>
 
-    <script>
-        $Lightning.use("c:lighOutApp",
-            function() { // Callback once framework and app load
-                $Lightning.createComponent(
-                    "lightning:flow",
-                    { },
-                    "container",
-                    function(component) { // API name of the Flow
-                        component.startFlow("SF_Contact_Us_Ryobi_Form");
-                    }
-                );
-            },
-            'https://tti-dev-ed.develop.my.site.com/ContactUs' // Site endpoint
-        );
-    </script>
+  <!-- Lightning Out 2.0 web component: base configuration -->
+  <lightning-out-application
+    frontdoor-url="https://tti-dev-ed.develop.my.salesforce.com/secur/frontdoor.jsp?..."
+    components="c:LightningOuttwolwc"
+  >
+  </lightning-out-application>
+
+ <!-- Lightning Out 2.0 web component -->
+  <c-lightning-outtwolwc style="--custom-color: brown;">
+    <!-- shadow DOM open -->
+    <iframe>
+      <html>
+        <!-- Salesforce context -->
+        <body>
+          <!-- Lightning web component -->
+          <c-lightning-outtwolwc style="--custom-color: brown;"></c-lightning-outtwolwc>
+        </body>
+      </html>
+    </iframe>
+    <!-- shadow DOM close -->
+  </c-lightning-outtwolwc>
+  
 </body>
-</html>
