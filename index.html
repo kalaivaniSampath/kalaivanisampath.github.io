@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+  <title>Lightning Out 2.0 Example</title>
 </head>
 <body>
-  <!-- Lightning Out 2.0 JS library -->
-      <script 
-          type="text/javascript" 
-          async="" 
-          src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
-     </script>
+  <!-- Load Lightning Out 2.0 JS library -->
+  <script 
+      type="text/javascript" 
+      src="https://tti-emea--sjdev.sandbox.my.salesforce.com/lightning/lightning.out.latest/index.iife.prod.js">
+  </script>
 
-         <lightning-out-application 
-           frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?..."
-           components="c-ligtningouttwoexample">
-          </lightning-out-application>
+  <!-- Lightning Out 2.0 application container -->
+  <lightning-out-application 
+      frontdoor-url="https://tti-emea--sjdev.sandbox.my.salesforce.com/secur/frontdoor.jsp?sid=YOUR_SESSION_ID"
+      components="c-lightningouttwoexample">
+  </lightning-out-application>
 
-
- <!-- Lightning Out 2.0 web component -->
-  <c-ligtningouttwoexample style="--custom-color: brown;">
-    <!-- shadow DOM open -->
-    <iframe>
-      <html>
-        <!-- Salesforce context -->
-        <body>
-          <!-- Lightning web component -->
-          <c-ligtningouttwoexample style="--custom-color: brown;"></c-ligtningouttwoexample>
-          <h1> welcome  to lightning out 2.0</h1>
-
-        </body>
-      </html>
-    </iframe>
-    <!-- shadow DOM close -->
-  </c-ligtningouttwoexample>
+  <h1>Welcome to Lightning Out 2.0 via GitHub Pages</h1>
 </body>
 </html>
