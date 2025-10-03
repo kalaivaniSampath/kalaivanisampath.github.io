@@ -1,15 +1,28 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login to Salesforce</title>
+    <title>Lightning Out Case Flow</title>
+    <script src="https://tti-emea--sjdev.sandbox.my.salesforce-setup.com/lightning/lightning.out.js"></script>
 </head>
 <body>
-  <h2>Login to Load Lightning Web Component</h2>
+    <div id="caseFlowContainer"></div>
 
- 
-    <button>Login with Salesforce</button>
-  </a>
+    <script>
+        $Lightning.use(
+            "c:lightningoutapp", // Lightning Out App
+            function() {
+                $Lightning.createComponent(
+                    "c:lightningoutaura", // Aura wrapper
+                    {},
+                    "caseFlowContainer",
+                    function(cmp) {
+                        console.log("✅ Case Flow loaded successfully!");
+                    }
+                );
+            },
+            "https://tti-emea--sjdev.sandbox.my.salesforce-setup.com/", // Salesforce domain
+            "YOUR_SESSION_OR_ACCESS_TOKEN"
+        );
+    </script>
 </body>
 </html>
-
