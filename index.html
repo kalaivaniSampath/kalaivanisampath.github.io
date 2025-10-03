@@ -8,14 +8,14 @@
     <div id="container"></div>
 
     <script>
-        $Lightning.use(
-            "c:lightningoutapp", 
+        $Lightning.use("c:lightningoutapp", 
             function() {
                 $Lightning.createComponent(
-                    "c:lightningoutlwc", 
+                    "lightning:flow", 
                     {},
                     "container",
                     function(component) {
+                        component.startFlow("SF_lightningouttwo_Ryobi_Form");
                         console.log("✅ Case Flow loaded successfully!");
                     }
                 );
@@ -25,3 +25,7 @@
     </script>
 </body>
 </html>
+
+
+
+
