@@ -2,20 +2,20 @@
 <html>
 <head>
     <title>Lightning Out Case Flow</title>
-    <script src="https://tti-emea--sjdev.sandbox.my.site.com/ContacUs/lightning/lightning.out.js"></script>
+    <script  type='text/javascript' src='https://tti-emea--sjdev.sandbox.my.site.com/ContacUs/lightning/lightning.out.js'></script>
 </head>
 <body>
-    <div id="caseFlowContainer"></div>
+    <div id="container"></div>
 
     <script>
         $Lightning.use(
-            "c:lightningoutapp", // Lightning Out App
+            "c:lightningoutapp", 
             function() {
                 $Lightning.createComponent(
-                    "c:lightningoutlwc", // LWC component
+                    "c:lightningoutlwc", 
                     {},
-                    "caseFlowContainer",
-                    function(cmp) {
+                    "container",
+                    function(component) {
                         console.log("✅ Case Flow loaded successfully!");
                     }
                 );
