@@ -1,1 +1,27 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lightning Out Ryobi Contact us Form</title>
+    <script  type='text/javascript' src='https://tti-dev-ed.develop.my.salesforce-setup.com/lightning/lightning.out.js'></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        $Lightning.use("c:flowlightningOutApp", //aura component
+            function() {
+                $Lightning.createComponent(
+                    "lightning:flow", 
+                    {},
+                    "container",
+                    function(component) {
+                        component.startFlow("SF_Contact_Us_Ryobi_Form");
+                    }
+                );
+            },
+            "https://tti-dev-ed.develop.my.site.com/ContactUs"
+        );
+    </script>
+</body>
+</html>
