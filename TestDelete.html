@@ -1,26 +1,25 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lightning Out Ryobi Contact us Form</title>
-    <script  type='text/javascript' src='https://tti-dev-ed.develop.my.site.com/ContactUs/lightning/lightning.out.js'></script>
+    <title>Lightning Out Ryobi Contact Us Form</title>
+    <script  type='text/javascript' src='https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js'></script>
 </head>
 <body>
     <div id="container"></div>
 
     <script>
-        $Lightning.use("c:flowlightningOutApp", //aura component
+        $Lightning.use("c:contactUsFormApp", 
             function() {
                 $Lightning.createComponent(
                     "lightning:flow", 
                     {},
                     "container",
                     function(component) {
-                        component.startFlow("SF_Contact_Us_Ryobi_Form");
+                        component.startFlow("Case_ContactUsForm");
                     }
                 );
             },
-            "https://tti-dev-ed.develop.my.site.com/ContactUs"
+            "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
         );
     </script>
 </body>
