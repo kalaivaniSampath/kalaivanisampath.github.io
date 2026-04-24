@@ -1,0 +1,30 @@
+<div id="lightning"></div>
+
+  <script src="https://tti-emea--ksdev.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
+<script>
+let flowNameWeb = "CustomerSurvey_ScreenFlow";
+let params = new URLSearchParams(document.location.search);
+let uuid = params.get("id") ?? "none";
+let chatKey = params.get("chatKey") ?? "none";
+let msid = params.get("msid") ?? "none";
+$Lightning.use(
+    "c:contactUsRyobiApp", // name of the Lightning app
+    function() {
+        // Callback once framework and app loaded
+        $Lightning.createComponent(
+            "c:contactUsRyobi", // top-level component of your app
+            {
+                flowName: flowNameWeb,
+                chatKey: chatKey,
+                uuid: uuid,
+                msid: msid
+            }, // attributes to set on the component when created
+            "lightning", // the DOM location to insert the component
+            function(cmp) {
+                // callback when component is created and active on the page
+            }
+        );
+    },
+    'https://tti-emea--ksdev.sandbox.lightning.force.com/' // Community endpoint                                            
+);
+</script>
