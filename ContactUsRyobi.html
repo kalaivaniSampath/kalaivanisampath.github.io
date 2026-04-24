@@ -1,38 +1,50 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
-    <script  type='text/javascript' src='https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js'></script>
+
+    <!-- Lightning Out JS (must come from my.site.com) -->
+    <script type="text/javascript"
+        src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js">
+    </script>
 </head>
+
 <body>
     <div id="container"></div>
-<script>
-let flowNameWeb = "Case_ContactUsForm";
-let params = new URLSearchParams(document.location.search);
-let uuid = params.get("id") ?? "none";
-let chatKey = params.get("chatKey") ?? "none";
-let msid = params.get("msid") ?? "none";
-$Lightning.use(
-    "c:contactUsFormApp", // name of the Lightning app
-    function() {
-        // Callback once framework and app loaded
-        $Lightning.createComponent(
-            "c:contactUsFormLwc", // top-level component of your app lwc
-            {
-                flowName: flowNameWeb,
-                chatKey: chatKey,
-                uuid: uuid,
-                msid: msid
-            }, // attributes to set on the component when created
-            "lightning", // the DOM location to insert the component
-            function(cmp) {
-                // callback when component is created and active on the page
-            }
+
+    <script>
+        let flowNameWeb = "Case_ContactUsForm";
+
+        let params = new URLSearchParams(window.location.search);
+        let uuid = params.get("id") ?? "none";
+        let chatKey = params.get("chatKey") ?? "none";
+        let msid = params.get("msid") ?? "none";
+
+        // Lightning Out Bootstrap
+        $Lightning.use(
+            "c:contactUsFormApp",
+            function () {
+
+                $Lightning.createComponent(
+                    "c:contactUsFormLwc",
+                    {
+                        flowName: flowNameWeb,
+                        chatKey: chatKey,
+                        uuid: uuid,
+                        msid: msid
+                    },
+                    "container", // ✅ FIXED: must match div id
+                    function (cmp) {
+                        console.log("Lightning component loaded successfully");
+                    }
+                );
+            },
+
+            // ✅ IMPORTANT: Use My Domain / Experience Cloud domain only
+            "https://tti-emea--ksdev.sandbox.my.site.com"
         );
-    },
-    'https://tti-emea--ksdev.sandbox.lightning.force.com' // Community endpoint                                            
-);
-</script>
+    </script>
 </body>
 </html>
-
+```
