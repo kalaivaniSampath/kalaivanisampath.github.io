@@ -2,7 +2,6 @@
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
 
-    <!-- ✅ Correct Lightning Out script domain -->
     <script src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js"></script>
 </head>
 
@@ -11,13 +10,11 @@
 
     <script>
         let flowNameWeb = "Case_ContactUsForm";
-          console.log("flowNameWeb"+flowNameWeb);
         let params = new URLSearchParams(window.location.search);
         let uuid = params.get("id") ?? "none";
         let chatKey = params.get("chatKey") ?? "none";
         let msid = params.get("msid") ?? "none";
 
-        // Lightning Out bootstrap
         $Lightning.use(
             "c:contactUsFormApp",
 
@@ -25,7 +22,7 @@
                 $Lightning.createComponent(
                     "c:contactUsFormLwc",
                     {
-                        flowName: flowNameWeb,
+                        flowApiName: flowNameWeb,
                         chatKey: chatKey,
                         uuid: uuid,
                         msid: msid
@@ -37,7 +34,6 @@
                 );
             },
 
-           // ✅ MUST be Lightning domain (not Experience Cloud site)
             "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
         );
     </script>
