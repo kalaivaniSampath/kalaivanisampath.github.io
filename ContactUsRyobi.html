@@ -2,17 +2,17 @@
 
   <script src="https://tti-emea--ksdev.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
 <script>
-let flowNameWeb = "Case_ContactUsForm";
+let flowNameWeb = "contactUsFormLwc";
 let params = new URLSearchParams(document.location.search);
 let uuid = params.get("id") ?? "none";
 let chatKey = params.get("chatKey") ?? "none";
 let msid = params.get("msid") ?? "none";
 $Lightning.use(
-    "c:contactUsRyobiApp", // name of the Lightning app
+    "c:contactUsFormApp", // name of the Lightning app
     function() {
         // Callback once framework and app loaded
         $Lightning.createComponent(
-            "c:contactUsRyobi", // top-level component of your app
+            "c:contactUsFormLwc", // top-level component of your app lwc
             {
                 flowName: flowNameWeb,
                 chatKey: chatKey,
