@@ -1,6 +1,11 @@
-<div id="lightning"></div>
-
-  <script src="https://tti-emea--ksdev.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lightning Out Ryobi Contact Us Form</title>
+    <script  type='text/javascript' src='https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js'></script>
+</head>
+<body>
+    <div id="container"></div>
 <script>
 let flowNameWeb = "Case_ContactUsForm";
 let params = new URLSearchParams(document.location.search);
@@ -28,3 +33,6 @@ $Lightning.use(
     'https://tti-emea--ksdev.sandbox.lightning.force.com' // Community endpoint                                            
 );
 </script>
+</body>
+</html>
+
