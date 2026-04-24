@@ -1,11 +1,10 @@
-<html>
 <!DOCTYPE html>
+<html>
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
 
-    <script type="text/javascript"
-        src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js">
-    </script>
+    <!-- ✅ Correct Lightning Out script domain -->
+    <script src="https://tti-emea--ksdev.sandbox.lightning.force.com/lightning/lightning.out.js"></script>
 </head>
 
 <body>
@@ -19,11 +18,11 @@
         let chatKey = params.get("chatKey") ?? "none";
         let msid = params.get("msid") ?? "none";
 
-        // Lightning Out Bootstrap
+        // Lightning Out bootstrap
         $Lightning.use(
             "c:contactUsFormApp",
-            function () {
 
+            function () {
                 $Lightning.createComponent(
                     "c:contactUsFormLwc",
                     {
@@ -32,17 +31,16 @@
                         uuid: uuid,
                         msid: msid
                     },
-                    "container", // ✅ FIXED: must match div id
+                    "container",
                     function (cmp) {
                         console.log("Lightning component loaded successfully");
                     }
                 );
             },
 
-            // ✅ IMPORTANT: Use My Domain / Experience Cloud domain only
-            "https://tti-emea--ksdev.sandbox.my.site.com"
+            // ✅ Correct Salesforce domain (NOT my.site.com)
+            "https://tti-emea--ksdev.sandbox.lightning.force.com"
         );
     </script>
 </body>
 </html>
-
