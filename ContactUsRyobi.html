@@ -11,10 +11,6 @@
     <script>
         let flowNameWeb = "Case_ContactUsForm";
         let params = new URLSearchParams(window.location.search);
-        let uuid = params.get("id") ?? "none";
-        let chatKey = params.get("chatKey") ?? "none";
-        let msid = params.get("msid") ?? "none";
-
         $Lightning.use(
             "c:contactUsFormApp",
 
@@ -23,9 +19,6 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        chatKey: chatKey,
-                        uuid: uuid,
-                        msid: msid
                     },
                     "container",
                     function (cmp) {
