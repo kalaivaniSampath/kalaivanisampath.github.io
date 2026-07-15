@@ -11,9 +11,11 @@
     <script>
         let flowNameWeb = "Case_ContactUsForm";
         let params = new URLSearchParams(window.location.search);
+        let lang = params.get('lang');
+        
         // const langParam = params.get('lang');
          // if (langParam) {
-          //this.lang = langParam;
+          //this.lang = langPlaram;
        }
       //console.log('Language parameter:', this.lang); 
         
@@ -25,6 +27,7 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
+                        lang:lang
                     },
                     "container",
                     function (cmp) {
