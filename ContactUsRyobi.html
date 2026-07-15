@@ -10,8 +10,7 @@
 
     <script>
         let flowNameWeb = "Case_ContactUsForm";
-        let params = new URLSearchParams(window.location.search);
-        let lang = params.get('lang') || 'en';
+        let userCulture = "EN-GB";
         
         $Lightning.use(
             "c:contactUsFormApp",
@@ -21,7 +20,7 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        lang:lang
+                        userCulture: userCulture
                     },
                     "container",
                     function (cmp) {
