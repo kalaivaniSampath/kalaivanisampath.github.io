@@ -17,15 +17,9 @@
 
         // Dynamically retrieve language ('lang') and form name ('formName') from the URL
         // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
-        //let langParam = getQueryParam("lang", "en"); 
-        // Dynamic userCulture extracted directly from URL parameter (defaults to "EN-US" if missing)
-        let userCulture = getQueryParam("userCulture", "EN-US");
-        
+        let langParam = getQueryParam("lang", "en"); 
         let formNameParam = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
-
-        // Dynamic userCulture extracted directly from URL parameter (defaults to "EN-US" if missing)
-        let userCulture = getQueryParam("userCulture", "EN-US");
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -36,7 +30,7 @@
                     {
                         flowApiName: flowNameWeb,
                         formName: formNameParam, // Passes 'RYO_Contact' or whatever is in URL
-                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
+                        lang: langParam          // Passes 'en', 'fr', 'de', etc. directly
                     },
                     "container",
                     function (cmp) {
