@@ -17,7 +17,7 @@
 
         // Dynamically retrieve language ('lang') and form name ('formName') from the URL
         // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
-        let langParam = getQueryParam("userCulture", "EN-GB"); 
+        let langParam = getQueryParam("lang", "en"); 
         let formNameParam = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
 
@@ -30,7 +30,7 @@
                     {
                         flowApiName: flowNameWeb,
                         formName: formNameParam, // Passes 'RYO_Contact' or whatever is in URL
-                        userCulture: langParam          // Passes 'en', 'fr', 'de', etc. directly
+                        lang: langParam          // Passes 'en', 'fr', 'de', etc. directly
                     },
                     "container",
                     function (cmp) {
