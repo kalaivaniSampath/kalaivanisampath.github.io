@@ -1,0 +1,28 @@
+// Helper to grab query parameters from the browser URL
+function getQueryParam(param, defaultValue) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || defaultValue;
+}
+
+// Automatically grabs whatever language code is in the URL (e.g. ?lang=fr, ?lang=de, ?lang=es)
+let langParam = getQueryParam("lang", "en"); 
+let formNameParam = getQueryParam("form", "RYO_Contact");
+
+$Lightning.use(
+    "c:contactUsFormApp",
+    function () {
+        $Lightning.createComponent(
+            "c:contactUsFormLwc",
+            {
+                flowApiName: "Case_ContactUsForm",
+                formName: formNameParam,
+                lang: langParam // Automatically handles 'en', 'fr', 'de', 'es', etc.
+            },
+            "container",
+            function (cmp) {
+                console.log("Component loaded for language: " + langParam);
+            }
+        );
+    },
+    "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
+);
