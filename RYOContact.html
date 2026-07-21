@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
@@ -10,8 +9,17 @@
     <div id="container"></div>
 
     <script>
+        // Helper function to dynamically extract query parameters from the website URL
+        function getQueryParam(param, defaultValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || defaultValue;
+        }
+
+        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
+        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
+        let userCulture = getQueryParam("userCulture", "en"); 
+        let formNameParam = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
-        let userCulture = "EN-GB";
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -21,11 +29,12 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        userCulture: userCulture
+                        formName: formNameParam, // Passes 'RYO_Contact' or whatever is in URL
+                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded successfully");
+                        console.log("Lightning component loaded successfully for language: " + langParam);
                     }
                 );
             },
