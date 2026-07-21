@@ -11,7 +11,7 @@
 
     <script>
         let flowNameWeb = "Case_ContactUsForm";
-        let userCulture = "fr";
+        let userCulture = "EN-GB";
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -21,7 +21,7 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        lang: userCulture
+                        userCulture: userCulture
                     },
                     "container",
                     function (cmp) {
