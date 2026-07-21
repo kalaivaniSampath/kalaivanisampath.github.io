@@ -1,28 +1,47 @@
-// Helper to grab query parameters from the browser URL
-function getQueryParam(param, defaultValue) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param) || defaultValue;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lightning Out Ryobi Contact Us Form</title>
 
-// Automatically grabs whatever language code is in the URL (e.g. ?lang=fr, ?lang=de, ?lang=es)
-let langParam = getQueryParam("lang", "en"); 
-let formNameParam = getQueryParam("form", "RYO_Contact");
+    <script src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js"></script>
+</head>
 
-$Lightning.use(
-    "c:contactUsFormApp",
-    function () {
-        $Lightning.createComponent(
-            "c:contactUsFormLwc",
-            {
-                flowApiName: "Case_ContactUsForm",
-                formName: formNameParam,
-                lang: langParam // Automatically handles 'en', 'fr', 'de', 'es', etc.
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Helper function to dynamically extract query parameters from the website URL
+        function getQueryParam(param, defaultValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || defaultValue;
+        }
+
+        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
+        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
+        let langParam = getQueryParam("lang", "en"); 
+        let formNameParam = getQueryParam("formName", "RYO_Contact");
+        let flowNameWeb = "Case_ContactUsForm";
+
+        $Lightning.use(
+            "c:contactUsFormApp",
+
+            function () {
+                $Lightning.createComponent(
+                    "c:contactUsFormLwc",
+                    {
+                        flowApiName: flowNameWeb,
+                        formName: formNameParam, // Passes 'RYO_Contact' or whatever is in URL
+                        lang: langParam          // Passes 'en', 'fr', 'de', etc. directly
+                    },
+                    "container",
+                    function (cmp) {
+                        console.log("Lightning component loaded successfully for language: " + langParam);
+                    }
+                );
             },
-            "container",
-            function (cmp) {
-                console.log("Component loaded for language: " + langParam);
-            }
+
+            "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
         );
-    },
-    "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
-);
+    </script>
+</body>
+</html>
