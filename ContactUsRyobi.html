@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
@@ -9,9 +10,18 @@
     <div id="container"></div>
 
     <script>
+        // Helper function to extract query parameters from the website URL
+        function getQueryParam(param, defaultValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || defaultValue;
+        }
+
+        // Hardcoded Flow API name
         let flowNameWeb = "Case_ContactUsForm";
-        let userCulture = "FR-FR";
-        
+
+        // Dynamic userCulture extracted directly from URL parameter (defaults to "EN-US" if missing)
+        let userCulture = getQueryParam("userCulture", "EN-US");
+
         $Lightning.use(
             "c:contactUsFormApp",
 
@@ -24,7 +34,7 @@
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded successfully");
+                        console.log("Lightning component loaded successfully with userCulture: " + userCulture);
                     }
                 );
             },
