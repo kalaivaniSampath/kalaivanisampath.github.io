@@ -1,1 +1,47 @@
 
+<html>
+<head>
+    <title>Lightning Out Ryobi Contact Us Form</title>
+
+    <script src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Helper function to dynamically extract query parameters from the website URL
+        function getQueryParam(param, defaultValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || defaultValue;
+        }
+
+        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
+        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
+        let userCulture = getQueryParam("userCulture", "en-GB"); 
+        let formName = getQueryParam("formName", "MWK_Contact");
+        let flowNameWeb = "Case_ContactUsForm";
+
+        $Lightning.use(
+            "c:contactUsFormApp",
+
+            function () {
+                $Lightning.createComponent(
+                    "c:contactUsFormLwc",
+                    {
+                        flowApiName: flowNameWeb,
+                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
+                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
+                    },
+                    "container",
+                    function (cmp) {
+                        console.log("Lightning component loaded successfully for language: " + langParam);
+                    }
+                );
+            },
+
+            "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
+        );
+    </script>
+</body>
+</html>
