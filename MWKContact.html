@@ -20,14 +20,14 @@
         // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
         let userCulture = getQueryParam("userCulture", "en-GB"); 
         let formName = getQueryParam("formName", "MWK_Contact");
-        let flowNameWeb = "Case_ContactUsForm";
+        let flowNameWeb = "MilwaukeeContactForm";
 
         $Lightning.use(
-            "c:contactUsFormApp",
+            "c:mwkcontactUsFormApp",
 
             function () {
                 $Lightning.createComponent(
-                    "c:contactUsFormLwc",
+                    "c:mwkContactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
                         formName: formName, // Passes 'RYO_Contact' or whatever is in URL
