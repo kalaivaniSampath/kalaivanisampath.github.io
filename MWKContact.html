@@ -1,47 +1,74 @@
-
 <html>
 <head>
     <title>Lightning Out Milwaukee Contact Us Form</title>
 
-    <script src="https://tti-emea--ksdev.sandbox.my.site.com/milwaukee/lightning/lightning.out.js"></script>
+```
+<script src="https://tti-emea--ksdev.sandbox.my.site.com/milwaukee/lightning/lightning.out.js"></script>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background-color: #ab0116 !important;
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: #ab0116 !important;
+    }
+
+    #container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #ab0116 !important;
+    }
+</style>
+```
+
 </head>
 
-<body style="margin: 0; background: transparent;">
+<body>
     <div id="container"></div>
 
-    <script>
-        // Helper function to dynamically extract query parameters from the website URL
-        function getQueryParam(param, defaultValue) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param) || defaultValue;
-        }
+```
+<script>
+    function getQueryParam(param, defaultValue) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param) || defaultValue;
+    }
 
-        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=MWK_Contact
-        let userCulture = getQueryParam("userCulture", "en-GB"); 
-        let formName = getQueryParam("formName", "MWK_Contact");
-        let flowNameWeb = "MilwaukeeContactForm";
+    let userCulture = getQueryParam("userCulture", "en-GB");
+    let formName = getQueryParam("formName", "MWK_Contact");
+    let flowNameWeb = "MilwaukeeContactForm";
 
-        $Lightning.use(
-            "c:mwkcontactUsFormApp",
+    $Lightning.use(
+        "c:mwkcontactUsFormApp",
 
-            function () {
-                $Lightning.createComponent(
-                    "c:mwkContactUsFormLwc",
-                    {
-                        flowApiName: flowNameWeb,
-                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
-                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
-                    },
-                    "container",
-                    function (cmp) {
-                        console.log("Lightning component loaded successfully for language: " + langParam);
-                    }
-                );
-            },
+        function () {
+            $Lightning.createComponent(
+                "c:mwkContactUsFormLwc",
+                {
+                    flowApiName: flowNameWeb,
+                    formName: formName,
+                    lang: userCulture
+                },
+                "container",
+                function (cmp) {
+                    console.log(
+                        "Lightning component loaded successfully for language: "
+                        + userCulture
+                    );
+                }
+            );
+        },
 
-            "https://tti-emea--ksdev.sandbox.my.site.com/milwaukee"
-        );
-    </script>
+        "https://tti-emea--ksdev.sandbox.my.site.com/milwaukee"
+    );
+</script>
+```
+
 </body>
 </html>
