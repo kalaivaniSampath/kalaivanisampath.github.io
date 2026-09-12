@@ -33,21 +33,78 @@
 <body>
     <div id="container"></div>
 
-```
 <script>
+    /**
+     * Get a query-string parameter from the current URL.
+     *
+     * Example:
+     * ?userCulture=de-DE
+     *
+     * Returns:
+     * de-DE
+     *
+     * If the parameter does not exist or is empty,
+     * the supplied default value is returned.
+     */
     function getQueryParam(param, defaultValue) {
         const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param) || defaultValue;
+        const value = urlParams.get(param);
+
+        if (value === null || value.trim() === "") {
+            return defaultValue;
+        }
+
+        return value.trim();
     }
 
-    let userCulture = getQueryParam("userCulture", "en-GB");
-    let formName = getQueryParam("formName", "MWK_Contact");
-    let flowNameWeb = "MilwaukeeContactForm";
+    /*
+     * Read values from the URL.
+     *
+     * Examples:
+     *
+     * ?userCulture=en-GB
+     * ?userCulture=de-DE
+     * ?userCulture=fr-FR
+     * ?userCulture=it-IT
+     */
+    const userCulture = getQueryParam("userCulture", "en-GB");
+    const formName = getQueryParam("formName", "MWK_Contact");
 
+    const flowNameWeb = "MilwaukeeContactForm";
+
+    /*
+     * Debug information.
+     *
+     * Open the browser Developer Tools > Console
+     * to see exactly what language is being received.
+     */
+    console.log("========================================");
+    console.log("Milwaukee Contact Form");
+    console.log("========================================");
+    console.log("Current URL:", window.location.href);
+    console.log(
+        "userCulture query parameter:",
+        new URLSearchParams(window.location.search).get("userCulture")
+    );
+    console.log("Final userCulture:", userCulture);
+    console.log("formName:", formName);
+    console.log("flowNameWeb:", flowNameWeb);
+    console.log("========================================");
+
+    /*
+     * Load the Salesforce Lightning Out application.
+     */
     $Lightning.use(
         "c:mwkcontactUsFormApp",
 
         function () {
+            console.log(
+                "Lightning Out application loaded successfully."
+            );
+
+            /*
+             * Create the Milwaukee Contact Us LWC.
+             */
             $Lightning.createComponent(
                 "c:mwkContactUsFormLwc",
                 {
@@ -56,10 +113,20 @@
                     lang: userCulture
                 },
                 "container",
+
                 function (cmp) {
                     console.log(
-                        "Lightning component loaded successfully for language: "
-                        + userCulture
+                        "Lightning component loaded successfully."
+                    );
+
+                    console.log(
+                        "Language passed to LWC:",
+                        userCulture
+                    );
+
+                    console.log(
+                        "Form name passed to LWC:",
+                        formName
                     );
                 }
             );
@@ -68,7 +135,7 @@
         "https://tti-emea--ksdev.sandbox.my.site.com/milwaukee"
     );
 </script>
-```
+
 
 </body>
 </html>
