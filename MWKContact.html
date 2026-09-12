@@ -52,7 +52,6 @@
          */
         $Lightning.use(
             "c:mwkcontactUsFormApp",
-
             function () {
                 console.log(
                     "Lightning Out application loaded successfully."
@@ -69,21 +68,12 @@
                     },
                     "container",
                     function (cmp) {
-                        console.log(
-                            "Lightning component loaded successfully."
-                        );
-                        console.log(
-                            "Language passed to LWC:",
-                            userCulture
-                        );
-                        console.log(
-                            "Form name passed to LWC:",
-                            formName
-                        );
+                        console.log("Lightning component loaded successfully.");
+                        console.log("Language passed to LWC:",userCulture);
+                        console.log("Form name passed to LWC:",formName);
                     }
                 );
             },
-
             "https://tti-emea--ksdev.sandbox.my.site.com/milwaukee"
         );
     </script>
