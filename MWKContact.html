@@ -23,7 +23,6 @@
         function getQueryParam(param, defaultValue) {
             const urlParams = new URLSearchParams(window.location.search);
             const value = urlParams.get(param);
-
             if (value === null || value.trim() === "") {
                 return defaultValue;
             }
@@ -40,10 +39,7 @@
          * Debug information.
          */
         console.log("Current URL:", window.location.href);
-        console.log(
-            "userCulture query parameter:",
-            new URLSearchParams(window.location.search).get("userCulture")
-        );
+        console.log("userCulture query parameter:",new URLSearchParams(window.location.search).get("userCulture"));
         console.log("Final userCulture:", userCulture);
         console.log("formName:", formName);
         console.log("flowNameWeb:", flowNameWeb);
