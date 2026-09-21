@@ -2,58 +2,34 @@
 <html lang="en" translate="no">
 <head>
     <meta charset="UTF-8" />
+    <!-- Standard browser translate opt-out -->
     <meta name="google" content="notranslate" />
+    <!-- Edge-specific translate opt-out -->
+    <meta name="microsoft-translate" content="disable" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Lightning Out Ryobi Contact Us Form</title>
 
     <script src="https://tti-emea--uat.sandbox.my.site.com/ryobi/lightning/lightning.out.js"></script>
-
-    <style>
-        /* Tell Edge's translator to skip this entire body */
-        body { -webkit-translate: none; }
-    </style>
 </head>
 
 <body translate="no" class="notranslate">
-    <!-- translate="no" on the container stops Edge translating dynamically injected LWC content -->
     <div id="container" translate="no" class="notranslate"></div>
 
     <script>
-        // Prevent Edge / Chromium translator from touching any element injected into #container
-        (function blockEdgeTranslate() {
-            var container = document.getElementById('container');
-
-            // Stamp translate="no" on every element added dynamically by Lightning Out
-            var observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    mutation.addedNodes.forEach(function (node) {
-                        if (node.nodeType === 1) { // ELEMENT_NODE
-                            node.setAttribute('translate', 'no');
-                            node.classList.add('notranslate');
-                            // Also stamp all descendants already in the subtree
-                            node.querySelectorAll('*').forEach(function (el) {
-                                el.setAttribute('translate', 'no');
-                                el.classList.add('notranslate');
-                            });
-                        }
-                    });
-                });
-            });
-
-            observer.observe(container, { childList: true, subtree: true });
-        })();
-
-        // Helper function to dynamically extract query parameters from the website URL
+        // ── Helper ───────────────────────────────────────────────────────────
         function getQueryParam(param, defaultValue) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param) || defaultValue;
         }
 
-        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
         let userCulture = getQueryParam("userCulture", "en-GB");
-        let formName = getQueryParam("formName", "RYO_Contact");
+        let formName    = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
+
+        // ── Set <html lang> to exactly what the URL requests ─────────────────
+        // When userCulture is "en-GB", Edge sees lang="en-GB" and knows the
+        // page is already in the user's language — suppressing auto-translate.
+        document.documentElement.lang = userCulture;
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -63,12 +39,12 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        formName: formName,
-                        lang: userCulture
+                        formName:    formName,
+                        lang:        userCulture
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded successfully for language: " + userCulture);
+                        console.log("Lightning component loaded for language: " + userCulture);
                     }
                 );
             },
