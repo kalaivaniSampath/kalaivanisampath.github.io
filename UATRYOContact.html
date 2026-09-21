@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" translate="no">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
     <title>Lightning Out Ryobi Contact Us Form</title>
 
     <script src="https://tti-emea--uat.sandbox.my.site.com/ryobi/lightning/lightning.out.js"></script>
@@ -9,15 +12,12 @@
     <div id="container"></div>
 
     <script>
-        // Helper function to dynamically extract query parameters from the website URL
         function getQueryParam(param, defaultValue) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param) || defaultValue;
         }
 
-        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
-        let userCulture = getQueryParam("userCulture", "en-GB"); 
+        let userCulture = getQueryParam("userCulture", "en-GB");
         let formName = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
 
@@ -29,17 +29,17 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
-                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
+                        formName: formName,
+                        lang: userCulture
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded successfully for language: " + langParam);
+                        console.log("Lightning component loaded successfully for language: " + userCulture);
                     }
                 );
             },
 
-            "https://tti-emea--uat.sandbox.my.site.com/ryobi"
+             "https://tti-emea--uat.sandbox.my.site.com/ryobi"
         );
     </script>
 </body>
