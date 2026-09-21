@@ -1,47 +1,25 @@
-<!DOCTYPE html>
-<html translate="no">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <!-- Standard browser translate opt-out -->
-    <meta name="google" content="notranslate" />
-    <!-- Edge-specific translate opt-out -->
-    <meta name="microsoft-translate" content="disable" />
     <title>Lightning Out Ryobi Contact Us Form</title>
-
-    <!--
-        IMPORTANT: lang is intentionally absent from <html> here.
-        Edge reads the static lang attribute before JS runs and uses it to
-        decide whether to auto-translate based on saved site preferences.
-        We set document.documentElement.lang dynamically from the URL param
-        so Edge cannot match it against any saved "always translate en→fr" rule.
-    -->
-    <script>
-        // Set lang BEFORE lightning.out.js loads so Edge has the correct value
-        // from the very first moment JS executes — no static "en" for Edge to latch on to.
-        (function () {
-            var params = new URLSearchParams(window.location.search);
-            var culture = params.get("userCulture") || "en-GB";
-            document.documentElement.lang = culture;
-            document.documentElement.setAttribute("translate", "no");
-        }());
-    </script>
 
     <script src="https://tti-emea--uat.sandbox.my.site.com/ryobi/lightning/lightning.out.js"></script>
 </head>
 
-<body translate="no" class="notranslate">
-    <div id="container" translate="no" class="notranslate"></div>
+<body>
+    <div id="container"></div>
 
     <script>
-        // ── Helper ───────────────────────────────────────────────────────────
+        // Helper function to dynamically extract query parameters from the website URL
         function getQueryParam(param, defaultValue) {
-            var urlParams = new URLSearchParams(window.location.search);
+            const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param) || defaultValue;
         }
 
-        var userCulture = getQueryParam("userCulture", "en-GB");
-        var formName    = getQueryParam("formName", "RYO_Contact");
-        var flowNameWeb = "Case_ContactUsForm";
+        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
+        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
+        let userCulture = getQueryParam("userCulture", "en-GB"); 
+        let formName = getQueryParam("formName", "RYO_Contact");
+        let flowNameWeb = "Case_ContactUsForm";
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -51,12 +29,12 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        formName:    formName,
-                        lang:        userCulture
+                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
+                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded for language: " + userCulture);
+                        console.log("Lightning component loaded successfully for language: " + langParam);
                     }
                 );
             },
