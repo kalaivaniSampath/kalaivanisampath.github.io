@@ -2,7 +2,7 @@
 <head>
     <title>Lightning Out Ryobi Contact Us Form</title>
 
-    <script src="https://tti-emea--uat.sandbox.my.site.com/ryobi/lightning/lightning.out.js"></script>
+    <script src="https://tti-emea--ksdev.sandbox.my.site.com/ContactUs/lightning/lightning.out.js"></script>
 </head>
 
 <body>
@@ -26,12 +26,9 @@
         let showSimplifiedForm = SIMPLIFIED_LOCALES.includes(userCulture);
 
         // Hide-phone-only layout (keeps Enquiry Type, hides Phone) — automatic for these locales.
-        // Also switches formName to the locale-specific form for correct picklist options.
-        const HIDE_PHONE_LOCALES = { "da-DK": "RYO_DK_Contact" };
-        let hidePhone = !!HIDE_PHONE_LOCALES[userCulture];
-        if (hidePhone && !getQueryParam("FormName") && !getQueryParam("formName", null)) {
-            formName = HIDE_PHONE_LOCALES[userCulture];
-        }
+        // formName stays as-is (RYO_Contact); translated labels come from the locale's translation file.
+        const HIDE_PHONE_LOCALES = ["da-DK"];
+        let hidePhone = HIDE_PHONE_LOCALES.includes(userCulture);
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -53,7 +50,7 @@
                 );
             },
 
-            "https://tti-emea--uat.sandbox.my.site.com/ryobi"
+            "https://tti-emea--ksdev.sandbox.my.site.com/ContactUs"
         );
     </script>
 </body>
