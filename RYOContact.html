@@ -15,17 +15,11 @@
             return urlParams.get(param) || defaultValue;
         }
 
-        // Dynamically retrieve language and form name from the URL
-        // Example URL usage: https://yourwebsite.com/contact?userCulture=hu-HU&FormName=RYO_Contact
-        //                 or: https://yourwebsite.com/contact?lang=hu-HU&FormName=RYO_Contact
-        let userCulture = getQueryParam("userCulture") || getQueryParam("lang", "en-GB");
-        let formName = getQueryParam("FormName") || getQueryParam("formName", "RYO_Contact");
+        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
+        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
+        let userCulture = getQueryParam("userCulture", "en-GB");
+        let formName = getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
-
-        // Simplified layout (no Enquiry Type, no Phone) — automatic for these locales.
-        const SIMPLIFIED_LOCALES = ["cs-CZ", "hu-HU"];
-        let showSimplifiedForm = SIMPLIFIED_LOCALES.includes(userCulture);
-
 
         $Lightning.use(
             "c:contactUsFormApp",
@@ -35,9 +29,8 @@
                     "c:contactUsFormLwc",
                     {
                         flowApiName: flowNameWeb,
-                        formName: formName,
-                        lang: userCulture,
-                        showSimplifiedForm: showSimplifiedForm
+                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
+                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
                     },
                     "container",
                     function (cmp) {
