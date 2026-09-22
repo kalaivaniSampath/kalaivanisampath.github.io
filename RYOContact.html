@@ -26,9 +26,12 @@
         let showSimplifiedForm = SIMPLIFIED_LOCALES.includes(userCulture);
 
         // Hide-phone-only layout (keeps Enquiry Type, hides Phone) — automatic for these locales.
-        // formName stays as-is (RYO_Contact); translated labels come from the locale's translation file.
-        const HIDE_PHONE_LOCALES = ["da-DK"];
-        let hidePhone = HIDE_PHONE_LOCALES.includes(userCulture);
+        // Uses a locale-specific formName so the correct picklist options (DK_*) are loaded.
+        const HIDE_PHONE_LOCALES = { "da-DK": "RYO_DK_Contact" };
+        let hidePhone = !!HIDE_PHONE_LOCALES[userCulture];
+        if (hidePhone) {
+            formName = HIDE_PHONE_LOCALES[userCulture];
+        }
 
         $Lightning.use(
             "c:contactUsFormApp",
