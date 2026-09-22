@@ -16,8 +16,9 @@
         }
 
         // Dynamically retrieve language and form name from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=cs-CZ&FormName=RYO_Contact
-        let userCulture = getQueryParam("userCulture", "en-GB");
+        // Example URL usage: https://yourwebsite.com/contact?userCulture=hu-HU&FormName=RYO_Contact
+        //                 or: https://yourwebsite.com/contact?lang=hu-HU&FormName=RYO_Contact
+        let userCulture = getQueryParam("userCulture") || getQueryParam("lang", "en-GB");
         let formName = getQueryParam("FormName") || getQueryParam("formName", "RYO_Contact");
         let flowNameWeb = "Case_ContactUsForm";
 
