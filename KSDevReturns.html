@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <title>Lightning Out Ryobi Returns Contact Us Form</title>
@@ -9,18 +10,45 @@
     <div id="container"></div>
 
     <script>
-        // Helper function to dynamically extract query parameters from the website URL
+        // Helper function to extract URL parameters
         function getQueryParam(param, defaultValue) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param) || defaultValue;
         }
 
-        // Dynamically retrieve language ('lang') and form name ('formName') from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
-        let userCulture = getQueryParam("userCulture", "en-GB"); 
-        let formName = getQueryParam("formName", "RYO_Contact");
+        // Retrieve website URL parameters
+        let userCulture = getQueryParam("userCulture", "en-GB");
+        let formName = getQueryParam("FormName",
+                       getQueryParam("formName", "RYO_Contact"));
+
+        let authenticatedParam = getQueryParam(
+            "authenticated",
+            getQueryParam("Authenticated", "false")
+        );
+
+        let firstName = getQueryParam(
+            "firstName",
+            getQueryParam("FirstName", "")
+        );
+
+        let lastName = getQueryParam(
+            "lastName",
+            getQueryParam("LastName", "")
+        );
+
+        let email = getQueryParam(
+            "email",
+            getQueryParam("Email", "")
+        );
+
+        // Convert authenticated value to Boolean
+        let authenticated =
+            authenticatedParam.toLowerCase() === "true" ||
+            authenticatedParam === "1";
+
         let flowNameWeb = "Case_Ryobi_Return";
 
+        // Initialise Lightning Out
         $Lightning.use(
             "c:ryobiReturnApp",
 
@@ -29,12 +57,25 @@
                     "c:ryobiReturnLightningOut",
                     {
                         flowApiName: flowNameWeb,
-                        formName: formName, // Passes 'RYO_Contact' or whatever is in URL
-                        lang: userCulture          // Passes 'en', 'fr', 'de', etc. directly
+                        formName: formName,
+                        lang: userCulture,
+
+                        // Pass authentication and customer details
+                        authenticated: authenticated,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email
                     },
                     "container",
                     function (cmp) {
-                        console.log("Lightning component loaded successfully for language: " + langParam);
+                        console.log(
+                            "Lightning component loaded successfully"
+                        );
+
+                        console.log("Authenticated:", authenticated);
+                        console.log("First Name:", firstName);
+                        console.log("Last Name:", lastName);
+                        console.log("Email:", email);
                     }
                 );
             },
