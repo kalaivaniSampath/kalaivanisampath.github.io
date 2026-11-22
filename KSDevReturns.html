@@ -15,10 +15,18 @@
         }
 
         // Dynamically retrieve language ('lang') and form name ('formName') from the URL
-        // Example URL usage: https://yourwebsite.com/contact?lang=fr&formName=RYO_Contact
-        let userCulture = getQueryParam("userCulture", "[[culturecode]]"); 
-        let formName = getQueryParam("formName", "RYO_Contact");
+        // Example URL usage:
+        // Unauthenticated: https://yourwebsite.com/KSDevReturns.html?userCulture=en-GB&formName=RYO_Contact
+        // Authenticated:   https://yourwebsite.com/KSDevReturns.html?userCulture=en-GB&formName=RYO_Contact&authenticated=true&firstName=John&lastName=Doe&email=john.doe@example.com
+        let userCulture = getQueryParam("userCulture", getQueryParam("lang", "en-GB"));
+        let formName = getQueryParam("formName", getQueryParam("FormName", "RYO_Contact"));
         let flowNameWeb = "Case_Ryobi_Return";
+
+        let authParam = getQueryParam("authenticated", getQueryParam("Authenticated", "false"));
+        let isAuthenticated = (authParam === "true" || authParam === true || authParam === "1");
+        let firstName = getQueryParam("firstName", getQueryParam("FirstName", "")).trim();
+        let lastName = getQueryParam("lastName", getQueryParam("LastName", "")).trim();
+        let email = getQueryParam("email", getQueryParam("Email", "")).trim();
 
         $Lightning.use(
             "c:ryobiReturnApp",
@@ -30,11 +38,11 @@
                         flowApiName: flowNameWeb,
                         formName: formName,
                         lang: userCulture,
-			            authenticated: true,
-                        firstName: " ",
-                        lastName: " ",
-                        email: " "
-                   },
+                        authenticated: isAuthenticated,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email
+                    },
                     "container",
                     function (cmp) {
                         console.log("Lightning component loaded successfully");
