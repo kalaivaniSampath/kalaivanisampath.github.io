@@ -16,8 +16,8 @@
 
         // Dynamically retrieve language ('lang') and form name ('formName') from the URL
         // Example URL usage:
-        // Unauthenticated: https://yourwebsite.com/KSDevReturns.html?userCulture=en-GB&formName=RYO_Contact
-        // Authenticated:   https://yourwebsite.com/KSDevReturns.html?userCulture=en-GB&formName=RYO_Contact&authenticated=true&firstName=John&lastName=Doe&email=john.doe@example.com
+        // Unauthenticated: https://yourwebsite.com/UATReturns.html?userCulture=en-GB&formName=RYO_Contact
+        // Authenticated:   https://yourwebsite.com/UATReturns.html?userCulture=en-GB&formName=RYO_Contact&authenticated=true&firstName=John&lastName=Doe&email=john.doe@example.com
         let userCulture = getQueryParam("userCulture", getQueryParam("lang", "en-GB"));
         let formName = getQueryParam("formName", getQueryParam("FormName", "RYO_Contact"));
         let flowNameWeb = "Case_Ryobi_Return";
